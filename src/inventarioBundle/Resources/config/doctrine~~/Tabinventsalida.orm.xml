@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="inventarioBundle\Entity\Tabinventsalida" table="TabInventSalida">
+    <indexes>
+      <index name="IDX_105CA7FB89420383" columns="codAlmacen"/>
+      <index name="IDX_105CA7FB8FBAD57E" columns="codProduct"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="canproducto" type="integer" column="canProducto" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="coddocument" type="string" column="codDocument" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="usrcreaci" type="string" column="usrCreaci" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="feccreaci" type="datetime" column="fecCreaci" nullable="false"/>
+    <field name="usrmodify" type="string" column="usrModify" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fecmodify" type="datetime" column="fecModify" nullable="true"/>
+    <field name="valsalida" type="decimal" column="valSalida" precision="10" scale="2" nullable="true"/>
+    <many-to-one field="codalmacen" target-entity="Tgeneraalmacen" fetch="LAZY">
+      <join-columns>
+        <join-column name="codAlmacen" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="codproduct" target-entity="Tgeneraproduct" fetch="LAZY">
+      <join-columns>
+        <join-column name="codProduct" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

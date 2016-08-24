@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %} {{ parent() }}
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/semantic.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="ui fullscreen modal" >
+          <div class="header">
+            Lista de entradas
+          </div>
+        <div align="center" class="content" >
+        </div>
+      <div class="actions">
+        <div class="ui black deny button">
+          Cancelar
+        </div>
+      </div>
+    </div>
+    <h1>Nueva Salida</h1>
+    <div class="ui stacked segment" >
+    {{ form_start(form,{ 'attr': {'class': 'ui form','onSubmit':'sendForm(event);'}  }) }}
+        <div class="field">
+            <label>Almacen</label> 
+            {{ form_widget(form.almacen) }}
+        </div>
+        <div class="field">
+                <label>Producto</label> 
+        {{ form_widget(form.product) }}
+        </div>
+        <div class="field" >
+       <label>Cantidad de Producto</label> 
+        {{ form_widget(form.canProducto) }}
+        </div>
+        <div class="field" >
+       <label>Valor de la entrada</label> 
+        {{ form_widget(form.valSalida) }}
+        </div>
+        <div class="field" >
+        <label>Documento</label>
+        {{ form_widget(form.codDocument) }}
+        </div>
+        <br><br> 
+        <input class="ui blue tiny button" type="submit" value="Crear" /> 
+    {{ form_end(form) }}
+    <br>
+    <button onclick="document.location.href = '{{ path('salida_index') }}';" class="ui compact blue labeled icon button">
+        <i class="arrow left icon"></i>
+        Atras
+    </button>
+     <button onclick="seachEntrada();" class="ui compact blue labeled icon button">
+        <i class="search left icon"></i>
+        Buscar Entrada
+    </button>
+    </div>
+{% endblock %}
+{% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/semantic.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/js/salida_new.js') }}"></script>
+{% endblock %}

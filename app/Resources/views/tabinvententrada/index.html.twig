@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/button.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/table.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/input.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <h1 align="center">Entradas</h1>
+    <table class="ui single line table">
+        <thead>
+            <tr>
+                {# sorting of properties based on query components #}
+                <th>{{ knp_pagination_sortable(tabInventEntradas, 'Id', 'a.id') }}<br>
+                    <div  class="ui mini icon input" >
+                        <input id="idEntrada" onchange="filter();" placeholder="Buscar por id" type="text" value="{% if param['codEntrada'] is defined %}{{ param['codEntrada'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Canproduct</th>
+                <th>Valentrada</th>
+                <th>Coddocument<br>
+                    <div  class="ui mini icon input" >
+                        <input id="codDocument" onchange="filter();" placeholder="Buscar por id" type="text" value="{% if param['codDocument'] is defined %}{{ param['codDocument'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Almacen<br>
+                    <div  class="ui mini icon input" >
+                        <input id="Almacen" onchange="filter();" placeholder="Buscar por id" type="text" value="{% if param['nomAlmacen'] is defined %}{{ param['nomAlmacen'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Producto<br>
+                    <div  class="ui mini icon input" >
+                        <input id="Producto" onchange="filter();" placeholder="Buscar por id" type="text" value="{% if param['nomProducto'] is defined %}{{ param['nomProducto'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Usrcreaci</th>
+                <th>Feccreaci</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tabInventEntrada in tabInventEntradas %}
+            <tr>
+                <td><a href="{{ path('entrada_show', { 'id': tabInventEntrada.id }) }}">{{ tabInventEntrada.id }}</a></td>
+                <td>{{ tabInventEntrada.canProduct }}</td>
+                <td>{{ tabInventEntrada.valEntrada }}</td>
+                <td>{{ tabInventEntrada.codDocument }}</td>
+                <td>{{ tabInventEntrada.Almacen }}</td>
+                <td>{{ tabInventEntrada.Producto }}</td>
+                <td>{{ tabInventEntrada.usrCreaci }}</td>
+                <td>{% if tabInventEntrada.fecCreaci %}{{ tabInventEntrada.fecCreaci|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <button class="ui mini icon button" onclick="document.location.href='{{ path('entrada_show', { 'id': tabInventEntrada.id }) }}'">
+                  <i class="info icon"></i>
+                </button>
+                <button class="ui mini icon button" onclick="document.location.href='{{ path('entrada_edit', { 'id': tabInventEntrada.id }) }}'">
+                  <i class="write icon"></i>
+                </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(tabInventEntradas) }}
+    <button onclick="document.location.href = '{{ path('entrada_new') }}';" class="ui compact blue labeled icon button">
+        <i class="add circle icon"></i>
+        Nueva Entrada
+    </button>
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('bundles/inventario/js/entrada_index.js') }}"></script>
+{% endblock %}

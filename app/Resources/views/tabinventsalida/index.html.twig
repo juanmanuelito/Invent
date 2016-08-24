@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/button.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/table.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/transition.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/modal.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/dimmer.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/input.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+     <div class="ui modal" >
+         <i class="close icon"></i>
+          <div class="header">
+            Informacion de Salida
+          </div>
+    <div align="center" class="content" style="width:95%">
+   
+</div>
+<div class="actions">
+    <div class="ui black deny button">
+      Salir
+    </div>
+  </div>
+    </div>
+
+    <h1>Lista de salidas</h1>
+
+    <table class="ui single line table">
+        <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(tabInventSalidas, 'Id', 'a.id') }}<br>
+                    <div  class="ui mini icon input" >
+                        <input id="idSalida" onchange="filter();" placeholder="Buscar por id" type="text" value="{% if param['idSalida'] is defined %}{{ param['idSalida'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Cantidad Producto</th>
+                <th>Documento<br>
+                    <div  class="ui mini icon input" >
+                        <input id="codDocum" onchange="filter();" placeholder="Buscar por Documento" type="text" value="{% if param['codDocum'] is defined %}{{ param['codDocum'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Almacen<br>
+                    <div  class="ui mini icon input" >
+                        <input id="nomAlmacen" onchange="filter();" placeholder="Buscar por almacen" type="text" value="{% if param['nomAlmacen'] is defined %}{{ param['nomAlmacen'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Producto<br>
+                    <div  class="ui mini icon input" >
+                        <input id="nomProduct" onchange="filter();" placeholder="Buscar por Producto" type="text" value="{% if param['nomProduct'] is defined %}{{ param['nomProduct'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Usuario de creacion</th>
+                <th>Fecha de Creacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tabInventSalida in tabInventSalidas %}
+            <tr>
+                <td><a href="{{ path('salida_show', { 'id': tabInventSalida.id }) }}">{{ tabInventSalida.id }}</a></td>
+                <td>{{ tabInventSalida.canProducto }}</td>
+                <td>{{ tabInventSalida.codDocument }}</td>
+                <td>{{ tabInventSalida.almacen }}</td>
+                <td>{{ tabInventSalida.product }}</td>
+                <td>{{ tabInventSalida.usrCreaci }}</td>
+                <td>{% if tabInventSalida.fecCreaci %}{{ tabInventSalida.fecCreaci|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <button class="ui mini icon button" onclick="showInfo('{{ path('salida_show', { 'id': tabInventSalida.id }) }}');">
+                  <i class="info icon"></i>
+                </button>
+                <button class="ui mini icon button" onclick="document.location.href='{{ path('salida_edit', { 'id': tabInventSalida.id }) }}'">
+                  <i class="write icon"></i>
+                </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  {{ knp_pagination_render(tabInventSalidas) }}
+  <button onclick="document.location.href = '{{ path('salida_new') }}';" class="ui compact blue labeled icon button">
+        <i class="add circle icon"></i>
+        Nueva Salida
+    </button>
+{% endblock %}
+{% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/transition.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/dimmer.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/modal.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/js/salida_index.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/button.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/table.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/menu.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/input.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <h1>Lista de Almacenes</h1>
+    <table  class="ui single line table">
+        <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(tGeneraAlmacens, 'Id', 'a.id') }}<br>
+                     <div  class="ui mini icon input" >
+                        <input id="idAlmacen" onchange="filter();" placeholder="Buscar por id" type="text" value="{% if param['idAlmacen'] is defined %}{{ param['idAlmacen'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th{% if tGeneraAlmacens.isSorted('a.nomalmacen') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(tGeneraAlmacens, 'Nombre', 'a.nomalmacen') }}<br>
+                     <div  class="ui mini icon input" >
+                        <input id="nomAlmacen" onchange="filter();" placeholder="Buscar por id" type="text" value="{% if param['nomAlmacen'] is defined %}{{ param['nomAlmacen'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Pais<br>
+                    <div  class="ui mini icon input" >
+                        <input id="nomPais" onchange="filter();" placeholder="Buscar por id" type="text" value="{% if param['nomPais'] is defined %}{{ param['nomPais'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Departamento<br>
+                    <div  class="ui mini icon input" >
+                        <input id="nomDepart" onchange="filter();" placeholder="Buscar por id" type="text" value="{% if param['nomDepart'] is defined %}{{ param['nomDepart'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Ciudad<br>
+                    <div  class="ui mini icon input" >
+                        <input id="nomCiudad" onchange="filter();" placeholder="Buscar por id" type="text" value="{% if param['nomCiudad'] is defined %}{{ param['nomCiudad'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Usrcreaci</th>
+                <th>Feccreaci</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tGeneraAlmacen in tGeneraAlmacens %}
+            <tr>
+                <td><a href="{{ path('almacen_show', { 'id': tGeneraAlmacen.id }) }}">{{ tGeneraAlmacen.id }}</a></td>
+                <td>{{ tGeneraAlmacen.nomAlmacen }}</td>
+                <td>{{ tGeneraAlmacen.codPais }}</td>
+                <td>{{ tGeneraAlmacen.codDepart }}</td>
+                <td>{{ tGeneraAlmacen.codCiudad }}</td>
+                <td>{{ tGeneraAlmacen.usrCreaci }}</td>
+                <td>{% if tGeneraAlmacen.fecCreaci %}{{ tGeneraAlmacen.fecCreaci|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <button class="ui mini icon button" onclick="document.location.href='{{ path('almacen_show', { 'id': tGeneraAlmacen.id }) }}'">
+                        <i class="info icon"></i>
+                    </button>
+                    <button class="ui mini icon button" onclick="document.location.href='{{ path('almacen_edit', { 'id': tGeneraAlmacen.id })  }}'">
+                        <i class="write icon"></i>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(tGeneraAlmacens) }}
+    <button class="tinny blue ui labeled icon button" onclick="document.location.href='{{ path('almacen_new') }}'">
+  <i class="add circle icon"></i>
+ Crear Almacen
+</button>
+{% endblock %}
+{% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/inventario/js/almacen_index.js') }}"></script>
+{% endblock %}

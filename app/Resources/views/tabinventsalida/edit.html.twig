@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %} {{ parent() }}
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/button.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/input.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/segment.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/form.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/dropdown.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/transition.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <h1>Editar Salida</h1>
+    <div class="ui stacked segment" >
+    {{ form_start(edit_form,{ 'attr': {'class': 'ui form'}  }) }}
+         <div class="field">
+        <label>Almacen</label> 
+            {{ form_widget(edit_form.almacen) }}
+        </div>
+        <div class="field">
+                <label>Producto</label> 
+        {{ form_widget(edit_form.product) }}
+        </div>
+        <div class="field" >
+       <label>Cantidad de Producto</label> 
+        {{ form_widget(edit_form.canProducto) }}
+        </div>
+        <div class="field" >
+       <label>Valor de la entrada</label> 
+        {{ form_widget(edit_form.valSalida) }}
+        </div>
+        <div class="field" >
+        <label>Documento</label>
+        {{ form_widget(edit_form.codDocument) }}
+        </div>
+        <br><br>
+        <input type="submit" class="ui blue tinny button" value="Editar" /> 
+    {{ form_end(edit_form) }}
+    <button onclick="document.location.href = '{{ path('salida_index') }}';" class="ui compact blue labeled icon button">
+        <i class="arrow left icon"></i>
+        Atras
+    </button>
+    {{ form_start(delete_form) }}
+        <input type="submit" class="ui blue tinny button" value="Delete">
+    {{ form_end(delete_form) }}
+    </div>
+{% endblock %}
+{% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/form.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/transition.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/dropdown.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/js/entrada_edit.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="inventarioBundle\Repository\TGeneraAlmacenRepository" name="inventarioBundle\Entity\TGeneraAlmacen">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="nomAlmacen" type="string" column="nomAlmacen" length="100"/>
+    <field name="codPais" type="string" column="codPais" length="50"/>
+    <field name="codDepart" type="string" column="codDepart" length="50"/>
+    <field name="codCiudad" type="string" column="codCiudad" length="50"/>
+    <field name="usrCreaci" type="string" column="usrCreaci" length="100"/>
+    <field name="fecCreaci" type="datetime" column="fecCreaci"/>
+    <field name="usrModify" type="string" column="usrModify" length="100" nullable="true"/>
+    <field name="fecModify" type="datetime" column="fecModify" nullable="true"/>
+  </entity>
+</doctrine-mapping>

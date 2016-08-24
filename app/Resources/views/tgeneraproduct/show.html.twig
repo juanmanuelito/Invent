@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TGeneraProduct</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nomproduct</th>
+                <td>{{ tGeneraProduct.nomProduct }}</td>
+            </tr>
+            <tr>
+                <th>Desproduct</th>
+                <td>{{ tGeneraProduct.desProduct }}</td>
+            </tr>
+            <tr>
+                <th>Usrcreate</th>
+                <td>{{ tGeneraProduct.usrCreate }}</td>
+            </tr>
+            <tr>
+                <th>Feccreaci</th>
+                <td>{% if tGeneraProduct.fecCreaci %}{{ tGeneraProduct.fecCreaci|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Usrmodify</th>
+                <td>{{ tGeneraProduct.usrModify }}</td>
+            </tr>
+            <tr>
+                <th>Fecmodify</th>
+                <td>{% if tGeneraProduct.fecModify %}{{ tGeneraProduct.fecModify|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ tGeneraProduct.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('product_edit', { 'id': tGeneraProduct.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

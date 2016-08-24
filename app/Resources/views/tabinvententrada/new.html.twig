@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %} 
+{% block stylesheets %} {{ parent() }}
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/button.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/input.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/segment.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/form.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/dropdown.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/transition.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <h1>Nueva Entrada</h1>
+    <div class="ui stacked segment" >
+    {{ form_start(form,{ 'attr': {'class': 'ui form '}  }) }}
+        <div class="field">
+        <label>Almacen</label> 
+            {{ form_widget(form.Almacen) }}
+        </div>
+        <div class="field">
+        <label>Producto</label> 
+        {{ form_widget(form.Producto) }}
+        </div>
+        <div class="field" >
+       <label>Cantidad de Producto</label> 
+        {{ form_widget(form.canProduct) }}
+        </div>
+        <div class="field" >
+       <label>Valor de la entrada</label> 
+        {{ form_widget(form.valEntrada) }}
+        </div>
+        <div class="field" >
+        <label>Documento</label>
+        {{ form_widget(form.codDocument) }}
+        </div>
+        <br><br> 
+        <button onclick="document.location.href = '{{ path('entrada_index') }}';" class="ui compact blue labeled icon button">
+        <i class="arrow left icon"></i>
+        Atras
+    </button>
+        <input class="ui blue tiny button" type="submit" value="Crear" /> 
+    {{ form_end(form) }}
+    </div>
+   
+{% endblock %}
+{% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/form.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/transition.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/dropdown.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/js/entrada_new.js') }}"></script>
+   {% endblock %}

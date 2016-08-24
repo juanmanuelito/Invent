@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="inventarioBundle\Repository\TabInventEntradaRepository" name="inventarioBundle\Entity\TabInventEntrada">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="canProduct" type="integer" column="canProduct"/>
+    <field name="valEntrada" type="decimal" column="valEntrada" precision="10" scale="2" nullable="true"/>
+    <field name="codDocument" type="string" column="codDocument" length="150" nullable="true"/>
+    <field name="usrCreaci" type="string" column="usrCreaci" length="100"/>
+    <field name="fecCreaci" type="datetime" column="fecCreaci"/>
+    <field name="usrModify" type="string" column="usrModify" length="100" nullable="true"/>
+    <field name="Almacen" type="integer" column="codAlmacen" />
+    <field name="Producto" type="integer" column="codProduct" />
+    <field name="fecModify" type="datetime" column="fecModify" nullable="true"/>
+  </entity>
+</doctrine-mapping>

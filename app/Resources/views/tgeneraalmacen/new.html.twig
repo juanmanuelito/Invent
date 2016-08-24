@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %} {{ parent() }}
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/button.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/input.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/segment.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/form.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/dropdown.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/transition.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <div class="ui stacked segment" >
+    <h1>Nuevo Almacen</h1>
+
+    {{ form_start(form,{ 'attr': {'class': 'ui form','onSubmit':'sendForm(event);'}  }) }}
+        
+        <div class="field">
+                <label>Nombre Almacen</label> 
+                        {{ form_widget(form.nomAlmacen) }}
+        </div>
+        <div class="field">
+                <label>Pais </label> 
+                        {{ form_widget(form.codpais) }}
+        </div>
+        <div class="field">
+                <label>Departamento</label> 
+                        {{ form_widget(form.codDepart) }}
+        </div>
+        <div class="field">
+                <label>Ciudad</label> 
+                        {{ form_widget(form.codCiudad) }}
+        </div>
+
+        <input class="ui blue tiny button" type="submit" value="Crear" />
+    {{ form_end(form) }}
+    <br>
+    <button onclick="document.location.href = '{{ path('almacen_index') }}';" class="ui compact blue labeled icon button">
+        <i class="arrow left icon"></i>
+        Atras
+    </button>
+    </div>
+{% endblock %}
+{% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/form.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/transition.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/dropdown.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/js/almacen_new.js') }}"></script>
+        
+{% endblock %}

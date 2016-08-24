@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="inventarioBundle\Repository\TGeneraProductRepository" name="inventarioBundle\Entity\TGeneraProduct">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="nomProduct" type="string" column="nomProduct" length="150"/>
+    <field name="desProduct" type="string" column="desProduct" length="200" nullable="true"/>
+    <field name="usrCreate" type="string" column="usrCreate" length="100"/>
+    <field name="fecCreaci" type="datetime" column="fecCreaci"/>
+    <field name="usrModify" type="string" column="usrModify" length="100" nullable="true"/>
+    <field name="fecModify" type="datetime" column="fecModify" nullable="true"/>
+  </entity>
+</doctrine-mapping>

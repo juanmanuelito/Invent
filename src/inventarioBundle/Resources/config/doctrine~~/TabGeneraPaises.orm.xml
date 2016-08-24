@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="inventarioBundle\Entity\TabGeneraPaises" table="tab_genera_paises">
+    <id name="codPaisxx" type="integer" column="cod_paisxx">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomPaisxx" type="string" column="nom_paisxx" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="abrPaisxx" type="string" column="abr_paisxx" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="usrCreaci" type="string" column="usr_creaci" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">Administrador</option>
+      </options>
+    </field>
+    <field name="fecCreaci" type="datetime" column="fec_creaci" nullable="false">
+      <options>
+        <option name="default">2003-10-29 00:00:00</option>
+      </options>
+    </field>
+    <field name="usrModifi" type="string" column="usr_modifi" length="15" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fecModifi" type="datetime" column="fec_modifi" nullable="true"/>
+  </entity>
+</doctrine-mapping>

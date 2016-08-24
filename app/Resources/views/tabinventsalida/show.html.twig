@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block space %}{% endblock %}
+{% block body %}
+    <table>
+        <tbody>
+            <tr>
+                <th>Canproducto</th>
+                <td>{{ tabInventSalida.canProducto }}</td>
+            </tr>
+            <tr>
+                <th>Coddocument</th>
+                <td>{{ tabInventSalida.codDocument }}</td>
+            </tr>
+            <tr>
+                <th>Usrcreaci</th>
+                <td>{{ tabInventSalida.usrCreaci }}</td>
+            </tr>
+            <tr>
+                <th>Feccreaci</th>
+                <td>{% if tabInventSalida.fecCreaci %}{{ tabInventSalida.fecCreaci|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Usrmodify</th>
+                <td>{{ tabInventSalida.usrModify }}</td>
+            </tr>
+            <tr>
+                <th>Fecmodify</th>
+                <td>{% if tabInventSalida.fecModify %}{{ tabInventSalida.fecModify|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Almacen</th>
+                <td>{{ tabInventSalida.almacen }}</td>
+            </tr>
+            <tr>
+                <th>Product</th>
+                <td>{{ tabInventSalida.product }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ tabInventSalida.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
+{% block javascripts %}
+    
+{% endblock %}

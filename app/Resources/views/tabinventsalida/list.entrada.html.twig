@@ -1,0 +1,53 @@
+<table class="ui single line table">
+        <thead>
+            <tr>
+                {# sorting of properties based on query components #}
+                <th>{{ knp_pagination_sortable(tabInventEntradas, 'Id', 'a.id') }}<br>
+                    <div class="ui mini icon input" >
+                        <input id="codEntrada" placeholder="Buscar por id" type="text" value="{% if param['codEntrada'] is defined %}{{ param['codEntrada'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Cantidad de producto</th>
+                <th>Valor de entrada</th>
+                <th>Codigo Documento</th>
+                <th>Almacen<br>
+                <div  class="ui mini icon input" >
+                        <input id="nomAlmacen" placeholder="Buscar por almacen" type="text" value="{% if param['nomAlmacen'] is defined %}{{ param['nomAlmacen'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Producto<br>
+                    <div class="ui mini icon input" >
+                        <input id="nomProducto" placeholder="Buscar por producto" type="text" value="{% if param['nomProducto'] is defined %}{{ param['nomProducto'] }}{% endif %}" style="width:80px;height:12px;">
+                        <i class="search icon"></i>
+                    </div>
+                </th>
+                <th>Usuario Creacion</th>
+                <th>Fecha Creacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tabInventEntrada in tabInventEntradas %}
+            <tr>
+                <td>{{ tabInventEntrada.id }}</td>
+                <td>{{ tabInventEntrada.canProduct }}</td>
+                <td>{{ tabInventEntrada.valEntrada }}</td>
+                <td>{{ tabInventEntrada.codDocument }}</td>
+                <td>{{ tabInventEntrada.Almacen }}</td>
+                <td>{{ tabInventEntrada.Producto }}</td>
+                <td>{{ tabInventEntrada.usrCreaci }}</td>
+                <td>{% if tabInventEntrada.fecCreaci %}{{ tabInventEntrada.fecCreaci|date('Y-m-d H:i:s') }}{% endif %}</td>
+                
+                <td>
+                <button class="ui mini icon button" onclick="copyData(this);">
+                  <i class="copy icon"></i>
+                </button>   
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(tabInventEntradas) }}
+   

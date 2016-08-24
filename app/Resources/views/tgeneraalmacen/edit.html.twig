@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %} {{ parent() }}
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/button.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/input.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/segment.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/form.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/dropdown.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/transition.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <h1>TGeneraAlmacen edit</h1>
+
+    {{ form_start(edit_form,{ 'attr': {'class': 'ui form','onSubmit':'sendForm(event);'}  }) }}
+         <div class="field">
+                <label>Nombre Almacen</label> 
+                        {{ form_widget(edit_form.nomAlmacen) }}
+        </div>
+        <div class="field">
+                <label>Pais </label> 
+                        {{ form_widget(edit_form.codPais) }}
+        </div>
+        <div class="field">
+                <label>Departamento</label> 
+                        {{ form_widget(edit_form.codDepart) }}
+        </div>
+        <div class="field">
+                <label>Ciudad</label> 
+                        {{ form_widget(edit_form.codCiudad) }}
+        </div>
+
+        <input type="submit" class="ui blue tiny button submit" value="Edit" />
+    {{ form_end(edit_form) }}
+    <br>
+    <button onclick="document.location.href = '{{ path('almacen_index') }}';" class="ui compact blue labeled icon button">
+        <i class="arrow left icon"></i>
+        Atras
+    </button>
+    
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+      
+{% endblock %}
+{% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/form.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/transition.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/Semantic-UI-CSS-master/components/dropdown.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/js/almacen_new.js') }}"></script>
+        
+{% endblock %}

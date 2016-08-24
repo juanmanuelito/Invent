@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TGeneraAlmacen</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nomalmacen</th>
+                <td>{{ tGeneraAlmacen.nomAlmacen }}</td>
+            </tr>
+            <tr>
+                <th>Codpais</th>
+                <td>{{ tGeneraAlmacen.codPais }}</td>
+            </tr>
+            <tr>
+                <th>Coddepart</th>
+                <td>{{ tGeneraAlmacen.codDepart }}</td>
+            </tr>
+            <tr>
+                <th>Codciudad</th>
+                <td>{{ tGeneraAlmacen.codCiudad }}</td>
+            </tr>
+            <tr>
+                <th>Usrcreaci</th>
+                <td>{{ tGeneraAlmacen.usrCreaci }}</td>
+            </tr>
+            <tr>
+                <th>Feccreaci</th>
+                <td>{% if tGeneraAlmacen.fecCreaci %}{{ tGeneraAlmacen.fecCreaci|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Usrmodify</th>
+                <td>{{ tGeneraAlmacen.usrModify }}</td>
+            </tr>
+            <tr>
+                <th>Fecmodify</th>
+                <td>{% if tGeneraAlmacen.fecModify %}{{ tGeneraAlmacen.fecModify|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ tGeneraAlmacen.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('almacen_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('almacen_edit', { 'id': tGeneraAlmacen.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

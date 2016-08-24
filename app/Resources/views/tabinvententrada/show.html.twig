@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block space %}{% endblock %}
+{% block body %}
+    <h1>TabInventEntrada</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Canproduct</th>
+                <td>{{ tabInventEntrada.canProduct }}</td>
+            </tr>
+            <tr>
+                <th>Valentrada</th>
+                <td>{{ tabInventEntrada.valEntrada }}</td>
+            </tr>
+            <tr>
+                <th>Coddocument</th>
+                <td>{{ tabInventEntrada.codDocument }}</td>
+            </tr>
+            <tr>
+                <th>Usrcreaci</th>
+                <td>{{ tabInventEntrada.usrCreaci }}</td>
+            </tr>
+            <tr>
+                <th>Feccreaci</th>
+                <td>{% if tabInventEntrada.fecCreaci %}{{ tabInventEntrada.fecCreaci|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Usrmodify</th>
+                <td>{{ tabInventEntrada.usrModify }}</td>
+            </tr>
+            <tr>
+                <th>Codalmacen</th>
+                <td>{{ tabInventEntrada.Almacen }}</td>
+            </tr>
+            <tr>
+                <th>Codproduct</th>
+                <td>{{ tabInventEntrada.Producto }}</td>
+            </tr>
+            <tr>
+                <th>Fecmodify</th>
+                <td>{% if tabInventEntrada.fecModify %}{{ tabInventEntrada.fecModify|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ tabInventEntrada.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('entrada_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('entrada_edit', { 'id': tabInventEntrada.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+{% block javascripts %}
+    
+{% endblock %}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="inventarioBundle\Entity\TabGeneraCiudad" table="tab_genera_ciudad">
+    <indexes>
+      <index name="cod_ciudad" columns="cod_ciudad"/>
+    </indexes>
+    <id name="codPaisxx" type="integer" column="cod_paisxx"/>
+    <id name="codDepart" type="integer" column="cod_depart"/>
+    <id name="codCiudad" type="integer" column="cod_ciudad"/>
+    <field name="nomCiudad" type="string" column="nom_ciudad" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombre de la Ciudad</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="abrCiudad" type="string" column="abr_ciudad" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Abreviatura de la Ciudad</option>
+        <option name="default"/>
+      </options>
+    </field>
+    <field name="codLatitu" type="float" column="cod_latitu" precision="10" scale="0" nullable="true"/>
+    <field name="codLongit" type="float" column="cod_longit" precision="10" scale="0" nullable="true"/>
+    <field name="nomUbicax" type="string" column="nom_ubicax" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="indEstado" type="string" column="ind_estado" length="1" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="comment">Indicador de estado (Valores 1: Activo; 2:Inactivo)</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="indDanexx" type="string" column="ind_danexx" length="1" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+        <option name="comment">ciudades Dane (1)</option>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <field name="valIcaxxx" type="float" column="val_icaxxx" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="comment">Valor ICA</option>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="codPeople" type="string" column="cod_people" length="5" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Codigo PeopleSoft</option>
+      </options>
+    </field>
+    <field name="usrCreaci" type="string" column="usr_creaci" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">Administrador</option>
+      </options>
+    </field>
+    <field name="fecCreaci" type="datetime" column="fec_creaci" nullable="false"/>
+    <field name="usrModifi" type="string" column="usr_modifi" length="15" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fecModifi" type="datetime" column="fec_modifi" nullable="true"/>
+  </entity>
+</doctrine-mapping>
